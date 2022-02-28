@@ -1,17 +1,20 @@
 import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcrypt';
 
-export const UsersSchema = new mongoose.Schema({
-  name: {
-    type: String,
+export const UsersSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    password: {
+      type: String,
+    },
   },
-  email: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
-});
+  { versionKey: false },
+);
 
 UsersSchema.pre('save', async function (next: mongoose.HookNextFunction) {
   try {
